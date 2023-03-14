@@ -1,181 +1,67 @@
 @import "../../styles/themify.scss";
 
-%flexBetween {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
-%menuBtn {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	background-color: transparent;
-	color: inherit;
-	border: none;
-	outline: none;
-	transition: background-color 0.2s ease;
-
-	&:hover,
-	&:focus {
-		background-color: rgba(0, 0, 0, 0.04);
-		cursor: pointer;
-	}
-
-	&:active {
-		background-color: rgba(0, 0, 0, 0.08);
-	}
-
-	& svg {
-		font-size: 25px;
-		@include themify("color", "neutral-dark");
-	}
-}
-
 .navbar {
-	@extend %flexBetween;
 	padding: 1rem 6%;
 	@include themify("background-color", "bg-alt");
-
 	&__main {
-		@extend %flexBetween;
 		gap: 1.75rem;
-
 		&_logo {
-			font-weight: bold;
-			font-size: clamp(1rem, 2rem, 2.25rem);
 			@include themify("color", "primary-main");
 			&:hover {
 				@include themify("color", "primary-light");
 				cursor: pointer;
 			}
 		}
-
 		&_search {
-			@extend %flexBetween;
 			@include themify("background-color", "neutral-light");
 			border-radius: 9px;
 			gap: 3rem;
 			padding: 0.1rem 1.5rem;
-
-			&_input {
-				border: none;
-				flex: 1;
-				outline: none;
-				background-color: transparent;
+			&_text {
 				@include themify("color", "neutral-dark");
 			}
-
 			&_btn {
-				display: inline-flex;
-				align-items: center;
-				justify-content: center;
-				padding: 0;
-				margin: 0;
-				min-width: 0;
-				background-color: transparent;
-				color: inherit;
-				border: none;
-				outline: none;
-				transition: background-color 0.2s ease;
-
-				&:hover,
-				&:focus {
-					background-color: rgba(0, 0, 0, 0.04);
-					cursor: pointer;
-				}
-
-				&:active {
-					background-color: rgba(0, 0, 0, 0.08);
-				}
-
-				& svg {
-					font-size: 1.25rem;
-					@include themify("color", "neutral-dark");
-				}
+				@include themify("color", "neutral-dark");
 			}
 		}
 	}
-
 	&__nav {
-		@extend %flexBetween;
 		gap: 2rem;
 		@include themify("color", "neutral-dark");
-		font-size: 25px;
 
-		&_mode_btn {
-			@extend %menuBtn;
-
-			&_icon {
-			}
+		&_mode-btn {
+			font-size: 25px;
+			@include themify("color", "neutral-dark");
 		}
-
+		&_message {
+			font-size: 25px;
+		}
+		&_notifications {
+			font-size: 25px;
+		}
+		&_help {
+			font-size: 25px;
+		}
 		&_dropdown {
-			position: relative;
-			display: inline-block;
+			@include themify("background-color", "neutral-light");
 			width: 150px;
+			border-radius: 0.25rem;
+			padding: 0.25rem 1rem;
 
-			&:hover &_menu {
-				display: block;
-			}
-
-			&:hover &_btn_icon {
-				transform: rotate(0deg);
-			}
-
-			&_btn {
-				@extend %flexBetween;
-
-				@include themify("background-color", "neutral-light");
+			& .MuiSvgIcon-root {
 				@include themify("color", "neutral-dark");
-				border-radius: 9px;
-				padding: 0.25rem 1rem;
-				border: none;
-				cursor: pointer;
-				width: 150px;
-				height: 30px;
 
-				&_text {
-					margin-right: 0.25rem;
-				}
-
-				&_icon {
-					font-size: 0.75rem;
-					transform: rotate(-90deg);
-				}
+				padding-right: 0.25rem;
+				width: 3rem;
 			}
 
-			&_menu {
-				position: absolute;
-				top: 100%;
-				left: 0;
-				display: none;
-				width: 150px;
+			& .MuiSelect-select:focus {
 				@include themify("background-color", "neutral-light");
-				list-style: none;
-				margin: 0;
-				padding: 0;
-				border-radius: 0.25rem;
-				border: none;
-				box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-
-				&_item {
-					padding: 0.5rem 1rem;
-					cursor: pointer;
-					font-size: 13px;
-					border-radius: 0.25rem;
-
-					&:hover {
-						@include themify("background-color", "neutral-medium");
-						padding: 0.5rem 1rem;
-						cursor: pointer;
-					}
-				}
 			}
 		}
 	}
 
-	&__menu {
+	&__mobile {
 		position: fixed;
 		right: 0;
 		bottom: 0;
@@ -184,102 +70,56 @@
 		max-width: 500px;
 		min-width: 300px;
 		@include themify("background-color", "bg-default");
-		@include themify("color", "neutral-dark");
-		font-size: 25px;
-		&_btn {
-			background-color: inherit;
-			@extend %menuBtn;
-			&_icon {
-				// @include themify("background-color", "neutral-light");
-				@include themify("color", "neutral-dark");
-			}
-		}
 
 		&_close {
 			display: flex;
 			justify-content: flex-end;
 			padding: 1rem;
-			&_btn {
-				@extend %menuBtn;
-				&_icon {
-				}
-			}
 		}
 
-		&_items {
-			@extend %flexBetween;
+		&_menu {
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
 			gap: 3rem;
+			@include themify("color", "neutral-dark");
 
-			&_dropdown {
-				position: relative;
-				display: inline-block;
-				width: 150px;
+			&_mode {
+				font-size: 25px;
 
-				&:hover &_menu {
-					display: block;
-				}
-
-				&:hover &_btn_icon {
-					transform: rotate(0deg);
-				}
-
-				&_btn {
-					@extend %flexBetween;
-
-					@include themify("background-color", "neutral-light");
+				&_dark {
+					font-size: 25px;
 					@include themify("color", "neutral-dark");
-					border-radius: 9px;
-					padding: 0.25rem 1rem;
-					border: none;
-					cursor: pointer;
-					width: 150px;
-					height: 30px;
-
-					&_text {
-						margin-right: 0.25rem;
-					}
-
-					&_icon {
-						font-size: 0.75rem;
-						transform: rotate(-90deg);
-					}
 				}
-
-				&_menu {
-					position: absolute;
-					top: 100%;
-					left: 0;
-					display: none;
-					width: 150px;
-					@include themify("background-color", "neutral-light");
-					list-style: none;
-					margin: 0;
-					padding: 0;
-					border-radius: 0.25rem;
-					border: none;
-					box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-
-					&_item {
-						padding: 0.5rem 1rem;
-						cursor: pointer;
-						font-size: 13px;
-						border-radius: 0.25rem;
-
-						&:hover {
-							@include themify("background-color", "neutral-medium");
-							padding: 0.5rem 1rem;
-							cursor: pointer;
-						}
-					}
+				&_light {
+					font-size: 25px;
+					@include themify("color", "neutral-dark");
 				}
 			}
+			&_message {
+				font-size: 25px;
+			}
+			&_notifications {
+				font-size: 25px;
+			}
+			&_help {
+				font-size: 25px;
+			}
+			&_dropdown {
+				@include themify("background-color", "neutral-light");
+				width: 150px;
+				border-radius: 0.25rem;
+				padding: 0.25rem 1rem;
 
-			&_mode_btn {
-				@extend %menuBtn;
+				& .MuiSvgIcon-root {
+					padding-right: 0.25rem;
+					width: 3rem;
+				}
+
+				& .MuiSelect-select:focus {
+					@include themify("background-color", "neutral-light");
+				}
 			}
 		}
 	}
