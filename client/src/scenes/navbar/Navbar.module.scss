@@ -43,10 +43,11 @@
 			font-size: 25px;
 		}
 		&_dropdown {
+			display: flex;
 			@include themify("background-color", "neutral-light");
-			width: 150px;
 			border-radius: 0.25rem;
 			padding: 0.25rem 1rem;
+			@include themify("color", "neutral-dark");
 
 			& .MuiSvgIcon-root {
 				@include themify("color", "neutral-dark");
@@ -59,6 +60,10 @@
 				@include themify("background-color", "neutral-light");
 			}
 		}
+	}
+
+	&__menuIcon {
+		@include themify("color", "neutral-dark");
 	}
 
 	&__mobile {
@@ -75,6 +80,10 @@
 			display: flex;
 			justify-content: flex-end;
 			padding: 1rem;
+
+			&_icon {
+				@include themify("color", "neutral-dark");
+			}
 		}
 
 		&_menu {
@@ -107,12 +116,15 @@
 				font-size: 25px;
 			}
 			&_dropdown {
+				display: flex;
 				@include themify("background-color", "neutral-light");
-				width: 150px;
 				border-radius: 0.25rem;
 				padding: 0.25rem 1rem;
+				@include themify("color", "neutral-dark");
 
 				& .MuiSvgIcon-root {
+					@include themify("color", "neutral-dark");
+
 					padding-right: 0.25rem;
 					width: 3rem;
 				}

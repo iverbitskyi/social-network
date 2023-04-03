@@ -100,6 +100,7 @@ export const FormComponent = () => {
 	return (
 		<Layout>
 			<Formik
+				className="formik"
 				onSubmit={handleFormSubmit}
 				initialValues={isLogin ? initialValuesLogin : initialValuesRegister}
 				validationSchema={isLogin ? loginSchema : registerSchema}
@@ -115,12 +116,7 @@ export const FormComponent = () => {
 					resetForm,
 				}) => (
 					<form onSubmit={handleSubmit}>
-						<Box
-							className="form"
-							sx={{
-								"& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
-							}}
-						>
+						<div className="form" style={{ gridColumn: isNonMobile ? undefined : "span 4" }}>
 							{isRegister && (
 								<>
 									<TextField
@@ -210,7 +206,7 @@ export const FormComponent = () => {
 								error={Boolean(touched.password) && Boolean(errors.password)}
 								helperText={touched.password && errors.password}
 							/>
-						</Box>
+						</div>
 
 						{/* BUTTONS */}
 						<Box>

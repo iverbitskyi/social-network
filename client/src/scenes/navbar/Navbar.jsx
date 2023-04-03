@@ -93,7 +93,7 @@ export const Navbar = () => {
 					</FlexBetween>
 				) : (
 					<IconButton onClick={() => setIsMobileMenuToggled(!isMobileMenuToggled)}>
-						<AiOutlineMenu />
+						<AiOutlineMenu className="navbar__menuIcon" />
 					</IconButton>
 				)}
 
@@ -103,7 +103,7 @@ export const Navbar = () => {
 						{/* CLOSE ICON */}
 						<Box className="navbar__mobile_close">
 							<IconButton onClick={() => setIsMobileMenuToggled(!isMobileMenuToggled)}>
-								<AiFillCloseCircle />
+								<AiFillCloseCircle className="navbar__mobile_close_icon" />
 							</IconButton>
 						</Box>
 

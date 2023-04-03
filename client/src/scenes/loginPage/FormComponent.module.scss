@@ -1,11 +1,18 @@
 @import "../../styles/themify.scss";
+.formik {
+	@include themify("color", "neutral-dark");
+}
 
 .form {
 	display: grid;
 	gap: 30px;
 	grid-template-columns: repeat(4, minmax(0, 1fr));
+	@include themify("color", "neutral-dark");
+	@include themify("border-color", "neutral-medium");
 
 	&__firstName {
+		@include themify("border-color", "neutral-dark");
+
 		grid-column: span 2;
 	}
 	&__lastName {

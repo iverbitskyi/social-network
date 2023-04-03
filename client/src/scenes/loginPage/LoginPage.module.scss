@@ -1,6 +1,8 @@
 @import "../../styles/themify.scss";
 
 .loginPage {
+	@include themify("background-color", "bg-alt");
+
 	&__name {
 		width: 100%;
 		@include themify("background-color", "bg-alt");
@@ -15,5 +17,9 @@
 		margin: 1rem auto;
 		border-radius: 1.5rem;
 		@include themify("background-color", "bg-alt");
+
+		&_text {
+			@include themify("color", "neutral-dark");
+		}
 	}
 }
