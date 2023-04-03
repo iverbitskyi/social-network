@@ -1,0 +1,28 @@
+@import "./theme.scss";
+
+$themes: (
+	light: (
+		primary-dark: $primary-700,
+		primary-main: $primary-500,
+		primary-light: $primary-50,
+		neutral-dark: $grey-700,
+		neutral-main: $grey-500,
+		neutral-mediumMain: $grey-400,
+		neutral-medium: $grey-300,
+		neutral-light: $grey-50,
+		bg-default: $grey-10,
+		bg-alt: $grey-0,
+	),
+	dark: (
+		primary-dark: $primary-200,
+		primary-main: $primary-500,
+		primary-light: $primary-800,
+		neutral-dark: $grey-100,
+		neutral-main: $grey-200,
+		neutral-mediumMain: $grey-300,
+		neutral-medium: $grey-400,
+		neutral-light: $grey-700,
+		bg-default: $grey-900,
+		bg-alt: $grey-800,
+	),
+);

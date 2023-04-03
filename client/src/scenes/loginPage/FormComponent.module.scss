@@ -1,0 +1,68 @@
+@import "../../styles/themify.scss";
+.formik {
+	@include themify("color", "neutral-dark");
+}
+
+.form {
+	display: grid;
+	gap: 30px;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	@include themify("color", "neutral-dark");
+	@include themify("border-color", "neutral-medium");
+
+	&__firstName {
+		@include themify("border-color", "neutral-dark");
+
+		grid-column: span 2;
+	}
+	&__lastName {
+		grid-column: span 2;
+	}
+	&__location {
+		grid-column: span 4;
+	}
+	&__occupation {
+		grid-column: span 4;
+	}
+	&__picture {
+		grid-column: span 4;
+		border: 1px solid;
+		@include themify("border-color", "neutral-medium");
+		border-radius: 5px;
+		padding: 1rem;
+
+		&_dropzone {
+			border: 2px dashed;
+			@include themify("border-color", "primary-main");
+			padding: 1rem;
+
+			&:hover {
+				cursor: pointer;
+			}
+		}
+	}
+	&__email {
+		grid-column: span 4;
+	}
+	&__password {
+		grid-column: span 4;
+	}
+
+	&__btn {
+		@include themify("background-color", "primary-main");
+		@include themify("color", "bg-alt");
+
+		&:hover {
+			@include themify("color", "primary-main");
+		}
+	}
+
+	&__change {
+		text-decoration: underline;
+		@include themify("color", "primary-main");
+		&:hover {
+			cursor: pointer;
+			@include themify("color", "primary-light");
+		}
+	}
+}

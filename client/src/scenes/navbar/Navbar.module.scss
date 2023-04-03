@@ -1,0 +1,138 @@
+@import "../../styles/themify.scss";
+
+.navbar {
+	padding: 1rem 6%;
+	@include themify("background-color", "bg-alt");
+	&__main {
+		gap: 1.75rem;
+		&_logo {
+			@include themify("color", "primary-main");
+			&:hover {
+				@include themify("color", "primary-light");
+				cursor: pointer;
+			}
+		}
+		&_search {
+			@include themify("background-color", "neutral-light");
+			border-radius: 9px;
+			gap: 3rem;
+			padding: 0.1rem 1.5rem;
+			&_text {
+				@include themify("color", "neutral-dark");
+			}
+			&_btn {
+				@include themify("color", "neutral-dark");
+			}
+		}
+	}
+	&__nav {
+		gap: 2rem;
+		@include themify("color", "neutral-dark");
+
+		&_mode-btn {
+			font-size: 25px;
+			@include themify("color", "neutral-dark");
+		}
+		&_message {
+			font-size: 25px;
+		}
+		&_notifications {
+			font-size: 25px;
+		}
+		&_help {
+			font-size: 25px;
+		}
+		&_dropdown {
+			display: flex;
+			@include themify("background-color", "neutral-light");
+			border-radius: 0.25rem;
+			padding: 0.25rem 1rem;
+			@include themify("color", "neutral-dark");
+
+			& .MuiSvgIcon-root {
+				@include themify("color", "neutral-dark");
+
+				padding-right: 0.25rem;
+				width: 3rem;
+			}
+
+			& .MuiSelect-select:focus {
+				@include themify("background-color", "neutral-light");
+			}
+		}
+	}
+
+	&__menuIcon {
+		@include themify("color", "neutral-dark");
+	}
+
+	&__mobile {
+		position: fixed;
+		right: 0;
+		bottom: 0;
+		height: 100%;
+		z-index: 10;
+		max-width: 500px;
+		min-width: 300px;
+		@include themify("background-color", "bg-default");
+
+		&_close {
+			display: flex;
+			justify-content: flex-end;
+			padding: 1rem;
+
+			&_icon {
+				@include themify("color", "neutral-dark");
+			}
+		}
+
+		&_menu {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			gap: 3rem;
+			@include themify("color", "neutral-dark");
+
+			&_mode {
+				font-size: 25px;
+
+				&_dark {
+					font-size: 25px;
+					@include themify("color", "neutral-dark");
+				}
+				&_light {
+					font-size: 25px;
+					@include themify("color", "neutral-dark");
+				}
+			}
+			&_message {
+				font-size: 25px;
+			}
+			&_notifications {
+				font-size: 25px;
+			}
+			&_help {
+				font-size: 25px;
+			}
+			&_dropdown {
+				display: flex;
+				@include themify("background-color", "neutral-light");
+				border-radius: 0.25rem;
+				padding: 0.25rem 1rem;
+				@include themify("color", "neutral-dark");
+
+				& .MuiSvgIcon-root {
+					@include themify("color", "neutral-dark");
+
+					padding-right: 0.25rem;
+					width: 3rem;
+				}
+
+				& .MuiSelect-select:focus {
+					@include themify("background-color", "neutral-light");
+				}
+			}
+		}
+	}
+}
