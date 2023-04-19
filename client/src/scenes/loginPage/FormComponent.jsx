@@ -8,7 +8,7 @@ import Dropzone from "react-dropzone";
 import { useMediaQuery } from "react-responsive";
 import { FiEdit } from "react-icons/fi";
 import { Layout } from "components/layout";
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { FlexBetween } from "components/flexBetween";
 
 const registerSchema = yup.object().shape({
@@ -119,46 +119,130 @@ export const FormComponent = () => {
 						<div className="form" style={{ gridColumn: isNonMobile ? undefined : "span 4" }}>
 							{isRegister && (
 								<>
-									<TextField
-										className="form__firstName"
-										label="First Name"
-										onBlur={handleBlur}
-										onChange={handleChange}
-										value={values.firstName}
-										name="firstName"
-										error={Boolean(touched.firstName) && Boolean(errors.firstName)}
-										helperText={touched.firstName && errors.firstName}
-									/>
-									<TextField
-										className="form__lastName"
-										label="Last Name"
-										onBlur={handleBlur}
-										onChange={handleChange}
-										value={values.lastName}
-										name="lastName"
-										error={Boolean(touched.lastName) && Boolean(errors.lastName)}
-										helperText={touched.lastName && errors.lastName}
-									/>
-									<TextField
-										className="form__location"
-										label="Location"
-										onBlur={handleBlur}
-										onChange={handleChange}
-										value={values.location}
-										name="location"
-										error={Boolean(touched.location) && Boolean(errors.location)}
-										helperText={touched.location && errors.location}
-									/>
-									<TextField
-										className="form__occupation"
-										label="Occupation"
-										onBlur={handleBlur}
-										onChange={handleChange}
-										value={values.occupation}
-										name="occupation"
-										error={Boolean(touched.occupation) && Boolean(errors.occupation)}
-										helperText={touched.occupation && errors.occupation}
-									/>
+									<div className="form__input_group">
+										<input
+											type="text"
+											name="firstName"
+											id="firstName"
+											value={values.firstName}
+											onChange={handleChange}
+											onBlur={handleBlur}
+											required
+											className={
+												errors.firstName && touched.firstName
+													? "form__input form__input_error"
+													: "form__input"
+											}
+										/>
+										<label
+											htmlFor="firstName"
+											className={
+												errors.firstName && touched.firstName
+													? "form__label form__lable_error"
+													: "form__label"
+											}
+										>
+											First Name
+										</label>
+
+										{errors.firstName && touched.firstName && (
+											<span className="form__error">{errors.firstName}</span>
+										)}
+									</div>
+
+									<div className="form__input_group">
+										<input
+											type="text"
+											name="lastName"
+											id="lastName"
+											value={values.lastName}
+											onChange={handleChange}
+											onBlur={handleBlur}
+											required
+											className={
+												errors.lastName && touched.lastName
+													? "form__input form__input_error"
+													: "form__input"
+											}
+										/>
+										<label
+											htmlFor="lastName"
+											className={
+												errors.lastName && touched.lastName
+													? "form__label form__lable_error"
+													: "form__label"
+											}
+										>
+											Last Name
+										</label>
+
+										{errors.lastName && touched.lastName && (
+											<span className="form__error">{errors.lastName}</span>
+										)}
+									</div>
+
+									<div className="form__input_group">
+										<input
+											type="text"
+											name="location"
+											id="location"
+											value={values.location}
+											onChange={handleChange}
+											onBlur={handleBlur}
+											required
+											className={
+												errors.location && touched.location
+													? "form__input form__input_error"
+													: "form__input"
+											}
+										/>
+										<label
+											htmlFor="location"
+											className={
+												errors.location && touched.location
+													? "form__label form__lable_error"
+													: "form__label"
+											}
+										>
+											Location
+										</label>
+
+										{errors.location && touched.location && (
+											<span className="form__error">{errors.location}</span>
+										)}
+									</div>
+
+									<div className="form__input_group">
+										<input
+											type="text"
+											name="occupation"
+											id="occupation"
+											value={values.occupation}
+											onChange={handleChange}
+											onBlur={handleBlur}
+											required
+											className={
+												errors.occupation && touched.occupation
+													? "form__input form__input_error"
+													: "form__input"
+											}
+										/>
+										<label
+											htmlFor="occupation"
+											className={
+												errors.occupation && touched.occupation
+													? "form__label form__lable_error"
+													: "form__label"
+											}
+										>
+											Occupation
+										</label>
+
+										{errors.occupation && touched.occupation && (
+											<span className="form__error">{errors.occupation}</span>
+										)}
+									</div>
+
 									<Box className="form__picture">
 										<Dropzone
 											acceptedFiles=".jpg,.jpeg,.png"
@@ -185,27 +269,67 @@ export const FormComponent = () => {
 								</>
 							)}
 
-							<TextField
-								className="form__email"
-								label="Email"
-								onBlur={handleBlur}
-								onChange={handleChange}
-								value={values.email}
-								name="email"
-								error={Boolean(touched.email) && Boolean(errors.email)}
-								helperText={touched.email && errors.email}
-							/>
-							<TextField
-								className="form__password"
-								label="Password"
-								type="password"
-								onBlur={handleBlur}
-								onChange={handleChange}
-								value={values.password}
-								name="password"
-								error={Boolean(touched.password) && Boolean(errors.password)}
-								helperText={touched.password && errors.password}
-							/>
+							<div className="form__input_group">
+								<input
+									type="text"
+									name="email"
+									id="email"
+									value={values.email}
+									onChange={handleChange}
+									onBlur={handleBlur}
+									required
+									className={
+										errors.email && touched.email
+											? "form__input form__input_error"
+											: "form__input"
+									}
+								/>
+								<label
+									htmlFor="email"
+									className={
+										errors.email && touched.email
+											? "form__label form__lable_error"
+											: "form__label"
+									}
+								>
+									Email
+								</label>
+
+								{errors.email && touched.email && (
+									<span className="form__error">{errors.email}</span>
+								)}
+							</div>
+
+							<div className="form__input_group">
+								<input
+									type="password"
+									name="password"
+									id="password"
+									value={values.password}
+									onChange={handleChange}
+									onBlur={handleBlur}
+									required
+									className={
+										errors.password && touched.password
+											? "form__input form__input_error"
+											: "form__input"
+									}
+								/>
+								<label
+									htmlFor="password"
+									className={
+										errors.password && touched.password
+											? "form__label form__lable_error"
+											: "form__label"
+									}
+								>
+									Password
+								</label>
+
+								{errors.password && touched.password && (
+									<span className="form__error">{errors.password}</span>
+								)}
+							</div>
 						</div>
 
 						{/* BUTTONS */}
