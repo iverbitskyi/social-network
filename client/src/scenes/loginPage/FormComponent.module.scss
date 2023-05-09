@@ -11,22 +11,9 @@
 	@include themify("color", "neutral-dark");
 	@include themify("border-color", "neutral-medium");
 
-	&__firstName {
-		grid-column: span 2;
-	}
-
-	&__lastName {
-		grid-column: span 2;
-	}
-	&__location {
-		grid-column: span 4;
-	}
-	&__occupation {
-		grid-column: span 4;
-	}
 	&__picture {
 		grid-column: span 4;
-		border: 1px solid;
+		border: 1.5px solid;
 		@include themify("border-color", "neutral-medium");
 		border-radius: 5px;
 		padding: 1rem;
@@ -40,12 +27,6 @@
 				cursor: pointer;
 			}
 		}
-	}
-	&__email {
-		grid-column: span 4;
-	}
-	&__password {
-		grid-column: span 4;
 	}
 
 	&__btn {
