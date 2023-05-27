@@ -7,9 +7,8 @@ import { setLogin } from "store/auth/auth.slice";
 import Dropzone from "react-dropzone";
 import { useMediaQuery } from "react-responsive";
 import { FiEdit } from "react-icons/fi";
-import { Layout } from "components/layout";
+import { Layout, FlexBetween } from "components";
 import { Box, Button, Typography } from "@mui/material";
-import { FlexBetween } from "components/flexBetween";
 
 const registerSchema = yup.object().shape({
 	firstName: yup.string().required("required"),

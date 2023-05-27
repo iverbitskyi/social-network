@@ -1,0 +1,7 @@
+@import "../../styles/themify.scss";
+
+.widgetWrapper {
+	padding: 1.5rem 1.5rem 0.75rem 1.5rem;
+	@include themify("background-color", "bg-alt");
+	border-radius: 0.75rem;
+}
