@@ -1,0 +1,46 @@
+@import "../../../styles/themify.scss";
+
+.myPostWidget {
+	&__input {
+		@include themify("background-color", "neutral-light");
+		@include themify("color", "neutral-dark");
+	}
+
+	&__dropzone {
+		&_solid {
+			@include themify("border-color", "neutral-medium");
+		}
+		&_dashed {
+			@include themify("border-color", "primary-main");
+		}
+		&_text {
+			@include themify("color", "neutral-mediumMain");
+		}
+	}
+
+	&__imageOutlined {
+		@include themify("color", "neutral-mediumMain");
+		&_title {
+			@include themify("color", "neutral-mediumMain");
+
+			&:hover {
+				@include themify("color", "neutral-medium");
+			}
+		}
+	}
+
+	&__gifBoxOutlined,
+	&__gifBoxOutlined_title,
+	&__attachFileOutlined,
+	&__attachFileOutlined_title,
+	&__micOutlined,
+	&__micOutlined_title,
+	&__moreHorizOutlined {
+		@include themify("color", "neutral-mediumMain");
+	}
+
+	&__postBtn {
+		@include themify("color", "bg-alt");
+		@include themify("background-color", "primary-main");
+	}
+}
