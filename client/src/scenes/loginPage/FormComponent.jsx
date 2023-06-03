@@ -70,8 +70,8 @@ export const FormComponent = () => {
 			method: "POST",
 			body: formData,
 		});
-
 		const savedUser = await savedUserResponse.json();
+
 		onSubmitProps.resetForm();
 
 		if (savedUser) {

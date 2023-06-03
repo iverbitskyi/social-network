@@ -16,12 +16,12 @@ import { UserImage, FlexBetween, WidgetWrapper, Layout } from "components";
 import { setPosts } from "./../../../store/auth/auth.slice";
 
 export const MyPostWidget = ({ picturePath }) => {
-	const dispatch = useDispatch();
+	const { _id } = useSelector((state) => state.auth.user);
+	const token = useSelector((state) => state.auth.token);
 	const [isImage, setIsImage] = useState(false);
 	const [image, setImage] = useState(null);
 	const [post, setPost] = useState("");
-	const { _id } = useSelector((state) => state.auth.user);
-	const token = useSelector((state) => state.auth.token);
+	const dispatch = useDispatch();
 
 	const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
 
@@ -41,7 +41,6 @@ export const MyPostWidget = ({ picturePath }) => {
 		});
 
 		const posts = await response.json();
-		console.log(posts);
 		dispatch(setPosts({ posts }));
 		setImage(null);
 		setPost("");
