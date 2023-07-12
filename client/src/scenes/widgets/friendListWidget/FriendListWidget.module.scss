@@ -1,0 +1,7 @@
+@import "../../../styles/themify.scss";
+
+.friendList {
+	&__title {
+		@include themify("color", "neutral-dark");
+	}
+}

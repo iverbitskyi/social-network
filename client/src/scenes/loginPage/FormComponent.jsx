@@ -1,23 +1,23 @@
+import { Box, Button, Typography, TextField } from "@mui/material";
+import { useMediaQuery } from "react-responsive";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { FiEdit } from "react-icons/fi";
+import Dropzone from "react-dropzone";
 import { useState } from "react";
 import { Formik } from "formik";
 import * as yup from "yup";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+
+import { Layout, FlexBetween } from "components";
 import { setLogin } from "store/auth/auth.slice";
-import Dropzone from "react-dropzone";
-import { useMediaQuery } from "react-responsive";
-import { FiEdit } from "react-icons/fi";
-import { Layout } from "components/layout";
-import { Box, Button, Typography } from "@mui/material";
-import { FlexBetween } from "components/flexBetween";
 
 const registerSchema = yup.object().shape({
+	email: yup.string().email("invalid email").required("required"),
+	occupation: yup.string().required("required"),
 	firstName: yup.string().required("required"),
 	lastName: yup.string().required("required"),
-	email: yup.string().email("invalid email").required("required"),
 	password: yup.string().required("required"),
 	location: yup.string().required("required"),
-	occupation: yup.string().required("required"),
 	picture: yup.string().required("required"),
 });
 
@@ -37,24 +37,33 @@ const initialValuesRegister = {
 };
 
 const initialValuesLogin = {
+	firstName: "",
+	lastName: "",
 	email: "",
 	password: "",
+	location: "",
+	occupation: "",
+	picture: "",
 };
 
 export const FormComponent = () => {
+	const isNonMobile = useMediaQuery({ minWidth: 600 });
+
 	const [pageType, setPageType] = useState("login");
+
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const isNonMobile = useMediaQuery({ minWidth: 600 });
-	const isLogin = pageType === "login";
+
 	const isRegister = pageType === "register";
+	const isLogin = pageType === "login";
 
 	const register = async (values, onSubmitProps) => {
-		// this allows us to send form info with image
 		const formData = new FormData();
+
 		for (let value in values) {
 			formData.append(value, values[value]);
 		}
+
 		formData.append("picturePath", values.picture.name);
 
 		const savedUserResponse = await fetch("http://localhost:4000/api/auth/register", {
@@ -62,6 +71,7 @@ export const FormComponent = () => {
 			body: formData,
 		});
 		const savedUser = await savedUserResponse.json();
+
 		onSubmitProps.resetForm();
 
 		if (savedUser) {
@@ -100,156 +110,63 @@ export const FormComponent = () => {
 	return (
 		<Layout>
 			<Formik
-				className="formik"
-				onSubmit={handleFormSubmit}
 				initialValues={isLogin ? initialValuesLogin : initialValuesRegister}
 				validationSchema={isLogin ? loginSchema : registerSchema}
+				onSubmit={handleFormSubmit}
+				enableReinitialize={true}
+				className="formik"
 			>
-				{({
-					values,
-					errors,
-					touched,
-					handleBlur,
-					handleChange,
-					handleSubmit,
-					setFieldValue,
-					resetForm,
-				}) => (
+				{({ values, errors, touched, handleBlur, handleChange, handleSubmit, setFieldValue, resetForm }) => (
 					<form onSubmit={handleSubmit}>
-						<div className="form" style={{ gridColumn: isNonMobile ? undefined : "span 4" }}>
+						<Box sx={{ "& > div": { gridColumn: isNonMobile ? undefined : "span 4" } }} className="form">
 							{isRegister && (
 								<>
-									<div className="form__input_group">
-										<input
-											type="text"
-											name="firstName"
-											id="firstName"
-											value={values.firstName}
-											onChange={handleChange}
-											onBlur={handleBlur}
-											required
-											className={
-												errors.firstName && touched.firstName
-													? "form__input form__input_error"
-													: "form__input"
-											}
-										/>
-										<label
-											htmlFor="firstName"
-											className={
-												errors.firstName && touched.firstName
-													? "form__label form__lable_error"
-													: "form__label"
-											}
-										>
-											First Name
-										</label>
+									<TextField
+										error={Boolean(touched.firstName) && Boolean(errors.firstName)}
+										helperText={touched.firstName && errors.firstName}
+										sx={{ gridColumn: "span 2" }}
+										value={values.firstName}
+										onChange={handleChange}
+										onBlur={handleBlur}
+										label="First Name"
+										name="firstName"
+									/>
 
-										{errors.firstName && touched.firstName && (
-											<span className="form__error">{errors.firstName}</span>
-										)}
-									</div>
-
-									<div className="form__input_group">
-										<input
-											type="text"
-											name="lastName"
-											id="lastName"
-											value={values.lastName}
-											onChange={handleChange}
-											onBlur={handleBlur}
-											required
-											className={
-												errors.lastName && touched.lastName
-													? "form__input form__input_error"
-													: "form__input"
-											}
-										/>
-										<label
-											htmlFor="lastName"
-											className={
-												errors.lastName && touched.lastName
-													? "form__label form__lable_error"
-													: "form__label"
-											}
-										>
-											Last Name
-										</label>
-
-										{errors.lastName && touched.lastName && (
-											<span className="form__error">{errors.lastName}</span>
-										)}
-									</div>
-
-									<div className="form__input_group">
-										<input
-											type="text"
-											name="location"
-											id="location"
-											value={values.location}
-											onChange={handleChange}
-											onBlur={handleBlur}
-											required
-											className={
-												errors.location && touched.location
-													? "form__input form__input_error"
-													: "form__input"
-											}
-										/>
-										<label
-											htmlFor="location"
-											className={
-												errors.location && touched.location
-													? "form__label form__lable_error"
-													: "form__label"
-											}
-										>
-											Location
-										</label>
-
-										{errors.location && touched.location && (
-											<span className="form__error">{errors.location}</span>
-										)}
-									</div>
-
-									<div className="form__input_group">
-										<input
-											type="text"
-											name="occupation"
-											id="occupation"
-											value={values.occupation}
-											onChange={handleChange}
-											onBlur={handleBlur}
-											required
-											className={
-												errors.occupation && touched.occupation
-													? "form__input form__input_error"
-													: "form__input"
-											}
-										/>
-										<label
-											htmlFor="occupation"
-											className={
-												errors.occupation && touched.occupation
-													? "form__label form__lable_error"
-													: "form__label"
-											}
-										>
-											Occupation
-										</label>
-
-										{errors.occupation && touched.occupation && (
-											<span className="form__error">{errors.occupation}</span>
-										)}
-									</div>
-
+									<TextField
+										error={Boolean(touched.lastName) && Boolean(errors.lastName)}
+										helperText={touched.lastName && errors.lastName}
+										sx={{ gridColumn: "span 2" }}
+										onChange={handleChange}
+										value={values.lastName}
+										onBlur={handleBlur}
+										label="Last Name"
+										name="lastName"
+									/>
+									<TextField
+										error={Boolean(touched.location) && Boolean(errors.location)}
+										helperText={touched.location && errors.location}
+										sx={{ gridColumn: "span 4" }}
+										value={values.location}
+										onChange={handleChange}
+										onBlur={handleBlur}
+										label="Location"
+										name="location"
+									/>
+									<TextField
+										error={Boolean(touched.occupation) && Boolean(errors.occupation)}
+										helperText={touched.occupation && errors.occupation}
+										sx={{ gridColumn: "span 4" }}
+										value={values.occupation}
+										onChange={handleChange}
+										onBlur={handleBlur}
+										label="Occupation"
+										name="occupation"
+									/>
 									<Box className="form__picture">
 										<Dropzone
+											onDrop={(acceptedFiles) => setFieldValue("picture", acceptedFiles[0])}
 											acceptedFiles=".jpg,.jpeg,.png"
 											multiple={false}
-											onDrop={(acceptedFiles) =>
-												setFieldValue("picture", acceptedFiles[0])
-											}
 										>
 											{({ getRootProps, getInputProps }) => (
 												<Box className="form__picture_dropzone" {...getRootProps()}>
@@ -269,77 +186,32 @@ export const FormComponent = () => {
 								</>
 							)}
 
-							<div className="form__input_group">
-								<input
-									type="text"
-									name="email"
-									id="email"
-									value={values.email}
-									onChange={handleChange}
-									onBlur={handleBlur}
-									required
-									className={
-										errors.email && touched.email
-											? "form__input form__input_error"
-											: "form__input"
-									}
-								/>
-								<label
-									htmlFor="email"
-									className={
-										errors.email && touched.email
-											? "form__label form__lable_error"
-											: "form__label"
-									}
-								>
-									Email
-								</label>
-
-								{errors.email && touched.email && (
-									<span className="form__error">{errors.email}</span>
-								)}
-							</div>
-
-							<div className="form__input_group">
-								<input
-									type="password"
-									name="password"
-									id="password"
-									value={values.password}
-									onChange={handleChange}
-									onBlur={handleBlur}
-									required
-									className={
-										errors.password && touched.password
-											? "form__input form__input_error"
-											: "form__input"
-									}
-								/>
-								<label
-									htmlFor="password"
-									className={
-										errors.password && touched.password
-											? "form__label form__lable_error"
-											: "form__label"
-									}
-								>
-									Password
-								</label>
-
-								{errors.password && touched.password && (
-									<span className="form__error">{errors.password}</span>
-								)}
-							</div>
-						</div>
+							<TextField
+								error={Boolean(touched.email) && Boolean(errors.email)}
+								helperText={touched.email && errors.email}
+								sx={{ gridColumn: "span 4" }}
+								onChange={handleChange}
+								value={values.email}
+								onBlur={handleBlur}
+								label="Email"
+								name="email"
+							/>
+							<TextField
+								error={Boolean(touched.password) && Boolean(errors.password)}
+								helperText={touched.password && errors.password}
+								sx={{ gridColumn: "span 4" }}
+								value={values.password}
+								onChange={handleChange}
+								onBlur={handleBlur}
+								label="Password"
+								type="password"
+								name="password"
+							/>
+						</Box>
 
 						{/* BUTTONS */}
 						<Box>
-							<Button
-								className="form__btn"
-								fullWidth
-								type="submit"
-								sx={{ m: "2rem 0", p: "1rem" }}
-							>
+							<Button className="form__btn" fullWidth type="submit" sx={{ m: "2rem 0", p: "1rem" }}>
 								{isLogin ? "LOGIN" : "REGISTER"}
 							</Button>
 							<Typography
@@ -349,9 +221,7 @@ export const FormComponent = () => {
 									resetForm();
 								}}
 							>
-								{isLogin
-									? "Don't have an account? Sign Up here."
-									: "Already have an account? Login here."}
+								{isLogin ? "Don't have an account? Sign Up here." : "Already have an account? Login here."}
 							</Typography>
 						</Box>
 					</form>

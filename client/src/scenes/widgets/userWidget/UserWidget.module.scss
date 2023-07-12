@@ -1,0 +1,81 @@
+@import "../../../styles/themify.scss";
+
+.userWidget {
+	&__name {
+		@include themify("color", "neutral-dark");
+		&:hover {
+			@include themify("color", "primary-light");
+		}
+	}
+	&__friends {
+		@include themify("color", "neutral-medium");
+	}
+
+	&__manageIcon {
+		@include themify("color", "neutral-main");
+	}
+
+	&__location {
+		@include themify("color", "neutral-medium");
+
+		&_icon {
+			@include themify("color", "neutral-main");
+		}
+	}
+
+	&__occupation {
+		@include themify("color", "neutral-medium");
+
+		&_icon {
+			@include themify("color", "neutral-main");
+		}
+	}
+
+	&__viewed {
+		@include themify("color", "neutral-main");
+
+		&_title {
+			@include themify("color", "neutral-medium");
+		}
+	}
+
+	&__impressions {
+		@include themify("color", "neutral-main");
+
+		&_title {
+			@include themify("color", "neutral-medium");
+		}
+	}
+
+	&__social {
+		@include themify("color", "neutral-main");
+	}
+
+	&__twitter {
+		@include themify("color", "neutral-main");
+
+		&_text {
+			@include themify("color", "neutral-medium");
+		}
+	}
+
+	&__linkedin {
+		@include themify("color", "neutral-main");
+
+		&_text {
+			@include themify("color", "neutral-medium");
+		}
+	}
+
+	&__editIcon {
+		@include themify("color", "neutral-main");
+	}
+
+	&__linkedinIcon {
+		@include themify("color", "neutral-main");
+	}
+
+	&__twitterIcon {
+		@include themify("color", "neutral-main");
+	}
+}

@@ -1,0 +1,23 @@
+@import "../../../styles/themify.scss";
+
+.post {
+	&__description {
+		@include themify("color", "neutral-main");
+	}
+
+	&__favorite {
+		@include themify("color", "neutral-main");
+
+		&_icon {
+			@include themify("color", "primary-main");
+		}
+	}
+
+	&__comments {
+		@include themify("color", "neutral-main");
+
+		&_icon {
+			@include themify("color", "neutral-main");
+		}
+	}
+}
