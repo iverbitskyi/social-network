@@ -1,0 +1,22 @@
+@import "../../../styles/themify.scss";
+
+.ad {
+	&__sponsored {
+		@include themify("color", "neutral-dark");
+	}
+	&__create {
+		@include themify("color", "neutral-medium");
+	}
+
+	&__title {
+		@include themify("color", "neutral-main");
+	}
+
+	&__link {
+		@include themify("color", "neutral-medium");
+	}
+
+	&__text {
+		@include themify("color", "neutral-medium");
+	}
+}

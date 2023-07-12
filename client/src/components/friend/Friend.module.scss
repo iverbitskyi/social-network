@@ -1,0 +1,23 @@
+@import "../../styles/themify.scss";
+
+.friend {
+	&__name {
+		@include themify("color", "neutral-main");
+		&:hover {
+			@include themify("color", "primary-light");
+		}
+	}
+	&__subtitle {
+		@include themify("color", "neutral-medium");
+	}
+
+	&__btn {
+		@include themify("background-color", "primary-light");
+		&_remove {
+			@include themify("color", "primary-dark");
+		}
+		&_add {
+			@include themify("color", "primary-dark");
+		}
+	}
+}

@@ -3,7 +3,7 @@ import { Layout } from "components/layout";
 import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { Box } from "@mui/material";
-import { UserWidget, MyPostWidget } from "scenes/widgets";
+import { UserWidget, MyPostWidget, PostsWidget, AdvertWidget, FriendListWidget } from "scenes/widgets";
 
 export const HomePage = () => {
 	const { _id, picturePath } = useSelector((state) => state.auth.user);
@@ -23,18 +23,15 @@ export const HomePage = () => {
 				<Box flexBasis={isNonMobileScreens ? "26%" : undefined}>
 					<UserWidget userId={_id} picturePath={picturePath} />
 				</Box>
-				<Box
-					flexBasis={isNonMobileScreens ? "42%" : undefined}
-					mt={isNonMobileScreens ? undefined : "2rem"}
-				>
+				<Box flexBasis={isNonMobileScreens ? "42%" : undefined} mt={isNonMobileScreens ? undefined : "2rem"}>
 					<MyPostWidget picturePath={picturePath} />
-					{/* <PostsWidget userId={_id} /> */}
+					<PostsWidget userId={_id} />
 				</Box>
 				{isNonMobileScreens && (
 					<Box flexBasis="26%">
-						{/* <AdvertWidget /> */}
+						<AdvertWidget />
 						<Box m="2rem 0" />
-						{/* <FriendListWidget userId={_id} /> */}
+						<FriendListWidget userId={_id} />
 					</Box>
 				)}
 			</Box>
