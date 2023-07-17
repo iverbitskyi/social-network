@@ -1,32 +1,32 @@
 @import "../../styles/themify.scss";
 
 .navbar {
-	padding: 1rem 6%;
 	@include themify("background-color", "bg-alt");
+
 	&__main {
-		gap: 1.75rem;
 		&_logo {
 			@include themify("color", "primary-main");
+
 			&:hover {
 				@include themify("color", "primary-light");
 				cursor: pointer;
 			}
 		}
+
 		&_search {
 			@include themify("background-color", "neutral-light");
-			border-radius: 9px;
-			gap: 3rem;
-			padding: 0.1rem 1.5rem;
+
 			&_text {
 				@include themify("color", "neutral-dark");
 			}
+
 			&_btn {
 				@include themify("color", "neutral-dark");
 			}
 		}
 	}
+
 	&__nav {
-		gap: 2rem;
 		@include themify("color", "neutral-dark");
 
 		&_mode-btn {
